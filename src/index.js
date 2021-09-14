@@ -9,6 +9,8 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 const cors = require('cors');
 
+let port = process.env.PORT || 3000;
+
 const app = express();
 app.use(cors())
 app.use(bodyParser.json());
@@ -45,8 +47,8 @@ app.get('/', (req, res) => {
 })
 
 
-app.listen(3000, () => {
-    console.log('app is listening on port 3000')
+app.listen(port, () => {
+    console.log('app is listening on port ' + port)
 })
 
 
