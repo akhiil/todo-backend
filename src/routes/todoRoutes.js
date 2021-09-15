@@ -47,10 +47,8 @@ router.delete('/todo', async (req, res) => {
 
 router.get('/seats', async (req, res) => {
     const { email } = req.body;
-    Todo.find({ email }).then((item) => {
-        res.send(item)
-    }).catch((err) => {
-        res.send(err)
-    })
+    console.log(email)
+    const todos = await Todo.find({ "email": email });
+    TextDecoderStream.send(todos);
 })
 module.exports = router;

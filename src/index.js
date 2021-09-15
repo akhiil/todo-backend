@@ -9,7 +9,7 @@ const bodyParser = require('body-parser');
 var session = require('express-session');
 const cors = require('cors');
 
-let port = process.env.PORT || 3000;
+let port = process.env.PORT || 3001;
 
 const app = express();
 app.use(cors())
