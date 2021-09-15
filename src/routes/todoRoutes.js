@@ -20,9 +20,9 @@ router.post('/todo', async (req, res) => {
     //     return res.status(422).send('you must provide Seat Number and email');
     // }
 
-    const seats = req.body;
+    const { seats, email } = req.body;
     seats.map((item) => {
-        const todo = new Todo({ seatNo: item.seatNo, email: item.email });
+        const todo = new Todo({ seatNo: item.seatNo, email });
         todo.save().then(() => {
             res.send(todo);
         }).catch((e) => {
