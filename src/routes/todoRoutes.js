@@ -14,18 +14,23 @@ router.get('/todo', async (req, res) => {
 })
 
 router.post('/todo', async (req, res) => {
-    const { seatNo, email } = req.body;
-    console.log(seatNo, " ", email)
-    if (!seatNo || !email) {
-        return res.status(422).send('you must provide Seat Number and email');
-    }
+    // const { seatNo, email } = req.body;
+    // console.log(seatNo, " ", email)
+    // if (!seatNo || !email) {
+    //     return res.status(422).send('you must provide Seat Number and email');
+    // }
 
-    const todo = new Todo({ seatNo, email });
-    todo.save().then(() => {
-        res.send(todo);
-    }).catch((e) => {
-        res.status(400).send(e);
+    const seats = req.body;
+    seats.map((item) => {
+        const todo = new Todo({ seatNo: item.seatNo, email: item.email });
+        todo.save().then(() => {
+            res.send(todo);
+        }).catch((e) => {
+            res.status(400).send(e);
+        })
     })
+
+
 })
 
 router.delete('/todo', async (req, res) => {
