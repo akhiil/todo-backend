@@ -43,11 +43,14 @@ router.delete('/todo', async (req, res) => {
             console.log(err)
         })
     })
-    // try {
-    //     const deletedTodo = await Todo.remove({ _id: req.params.todoId });
-    //     res.send(deletedTodo);
-    // } catch (e) {
-    //     res.send(e);
-    // }
+})
+
+router.get('/seats', async (req, res) => {
+    const { email } = req.body;
+    Todo.find({ email }).then((item) => {
+        res.send(item)
+    }).catch((err) => {
+        res.send(err)
+    })
 })
 module.exports = router;
